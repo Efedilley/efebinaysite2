@@ -1,0 +1,993 @@
+/* =========================================
+   GENEL
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --pink: #ff7fa3;
+    --pink-dark: #ed5f89;
+    --pink-light: #fff0f5;
+    --pink-soft: #ffe3ec;
+
+    --white: #ffffff;
+    --text: #5c4650;
+    --text-light: #8d747d;
+
+    --shadow:
+        0 10px 35px rgba(214, 116, 145, 0.12);
+
+    --radius: 24px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8fa 0%,
+            #fff0f5 50%,
+            #ffffff 100%
+        );
+
+    color: var(--text);
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   GİRİŞ
+========================================= */
+
+.login-screen {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #ffd9e5,
+            transparent 50%
+        ),
+        linear-gradient(
+            135deg,
+            #fff8fa,
+            #ffe9f0
+        );
+}
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 45px 35px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.9);
+
+    border: 1px solid rgba(255,255,255,0.9);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 25px 70px rgba(196, 103, 130, 0.18);
+}
+
+.login-heart {
+    font-size: 55px;
+
+    margin-bottom: 10px;
+
+    animation: heartbeat 1.5s infinite;
+}
+
+.login-card h1 {
+    color: var(--pink-dark);
+
+    font-size: 32px;
+
+    margin-bottom: 12px;
+}
+
+.login-card p {
+    line-height: 1.6;
+
+    color: var(--text-light);
+
+    margin-bottom: 25px;
+}
+
+.login-card p span {
+    font-size: 13px;
+}
+
+#passwordInput {
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border: 2px solid var(--pink-soft);
+
+    border-radius: 14px;
+
+    outline: none;
+
+    font-size: 16px;
+
+    text-align: center;
+
+    background: #fffafb;
+
+    color: var(--text);
+
+    transition: 0.2s;
+}
+
+#passwordInput:focus {
+    border-color: var(--pink);
+}
+
+#loginButton {
+    width: 100%;
+
+    margin-top: 14px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink),
+            var(--pink-dark)
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+#loginButton:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(237, 95, 137, 0.25);
+}
+
+#loginError {
+    color: #e85b78 !important;
+
+    margin-top: 15px;
+
+    margin-bottom: 0 !important;
+}
+
+
+/* =========================================
+   ANA SİTE
+========================================= */
+
+.main-site {
+    display: none;
+
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   MENÜ BUTONU
+========================================= */
+
+.menu-button {
+    position: fixed;
+
+    top: 22px;
+    left: 22px;
+
+    z-index: 900;
+
+    width: 52px;
+    height: 52px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background: white;
+
+    color: var(--pink-dark);
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    box-shadow: var(--shadow);
+
+    transition: 0.25s;
+}
+
+.menu-button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   YAN MENÜ
+========================================= */
+
+.side-menu {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    width: 320px;
+    height: 100vh;
+
+    padding: 25px 18px;
+
+    background:
+        rgba(255,255,255,0.97);
+
+    box-shadow:
+        15px 0 50px rgba(188, 103, 130, 0.12);
+
+    transform: translateX(-105%);
+
+    transition:
+        transform 0.35s ease;
+
+    overflow-y: auto;
+}
+
+.side-menu.open {
+    transform: translateX(0);
+}
+
+.menu-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 10px 8px 25px;
+}
+
+.menu-small-title {
+    display: block;
+
+    color: var(--text-light);
+
+    font-size: 12px;
+
+    margin-bottom: 4px;
+}
+
+.menu-header h2 {
+    color: var(--pink-dark);
+
+    font-size: 21px;
+}
+
+.close-menu {
+    border: none;
+
+    background: var(--pink-light);
+
+    color: var(--pink-dark);
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 12px;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   MENÜ KATEGORİLERİ
+========================================= */
+
+.menu-category {
+    margin-bottom: 8px;
+}
+
+.category-button {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.category-button:hover {
+    background: var(--pink-light);
+
+    color: var(--pink-dark);
+}
+
+.arrow {
+    font-size: 22px;
+
+    transition: transform 0.3s;
+}
+
+.menu-category.open .arrow {
+    transform: rotate(90deg);
+}
+
+
+/* =========================================
+   ALT MENÜ
+========================================= */
+
+.submenu {
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition:
+        max-height 0.3s ease;
+}
+
+.menu-category.open .submenu {
+    max-height: 300px;
+}
+
+.submenu-button {
+    width: calc(100% - 25px);
+
+    margin-left: 25px;
+
+    margin-bottom: 5px;
+
+    padding: 12px 14px;
+
+    border: none;
+
+    border-left: 2px solid var(--pink-soft);
+
+    background: transparent;
+
+    color: var(--text-light);
+
+    text-align: left;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    border-radius: 0 12px 12px 0;
+
+    transition: 0.2s;
+}
+
+.submenu-button:hover,
+.submenu-button.active {
+    background: var(--pink-light);
+
+    color: var(--pink-dark);
+
+    border-left-color: var(--pink);
+}
+
+
+/* =========================================
+   MENÜ ARKA PLANI
+========================================= */
+
+.menu-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 950;
+
+    background:
+        rgba(91, 49, 63, 0.18);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.3s;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================
+   İÇERİK
+========================================= */
+
+.content {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding:
+        90px 30px
+        60px;
+}
+
+.page {
+    display: none;
+
+    animation:
+        pageIn 0.4s ease;
+}
+
+.page.active-page {
+    display: block;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero-card {
+    padding: 45px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.95),
+            rgba(255,240,245,0.95)
+        );
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    border: 1px solid white;
+}
+
+.small-label {
+    display: inline-block;
+
+    padding: 7px 13px;
+
+    margin-bottom: 15px;
+
+    border-radius: 50px;
+
+    background: var(--pink-light);
+
+    color: var(--pink-dark);
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.hero-card h1 {
+    color: var(--pink-dark);
+
+    font-size: clamp(28px, 5vw, 42px);
+
+    margin-bottom: 20px;
+}
+
+.hero-card p {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    color: var(--text-light);
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   TYPING
+========================================= */
+
+.typing-text {
+    min-height: 80px;
+}
+
+
+/* =========================================
+   SAYAÇ KARTI
+========================================= */
+
+.counter-card {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 30px;
+
+    margin-bottom: 25px;
+
+    background: white;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+.counter-card span {
+    color: var(--text-light);
+
+    font-size: 14px;
+}
+
+.counter-card strong {
+    color: var(--pink-dark);
+
+    font-size: 28px;
+}
+
+
+/* =========================================
+   FOTOĞRAFLAR
+========================================= */
+
+.photo-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.photo-card {
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background: white;
+
+    box-shadow: var(--shadow);
+
+    aspect-ratio: 1 / 1;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.4s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   SORU
+========================================= */
+
+.question-card {
+    padding: 40px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+.question-card h2 {
+    margin-bottom: 25px;
+
+    color: var(--text);
+}
+
+.question-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.question-buttons button {
+    border: none;
+
+    padding: 13px 25px;
+
+    border-radius: 13px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.yes-button {
+    background: #ff82a5;
+
+    color: white;
+}
+
+.no-button {
+    background: #f3e8ec;
+
+    color: var(--text);
+
+    position: relative;
+}
+
+#resultText {
+    margin-top: 20px;
+
+    color: var(--pink-dark);
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   BÜYÜK SAYAÇ
+========================================= */
+
+.big-counter-card {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+.big-counter-card div {
+    padding: 25px 10px;
+
+    text-align: center;
+
+    background: var(--pink-light);
+
+    border-radius: 18px;
+}
+
+.big-counter-card strong {
+    display: block;
+
+    color: var(--pink-dark);
+
+    font-size: 35px;
+
+    margin-bottom: 5px;
+}
+
+.big-counter-card span {
+    color: var(--text-light);
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   DOĞUM GÜNÜ
+========================================= */
+
+.birthday-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.birthday-card {
+    padding: 35px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+.birthday-card span {
+    font-size: 45px;
+}
+
+.birthday-card h2 {
+    margin: 15px 0;
+
+    color: var(--text);
+}
+
+.birthday-card strong {
+    color: var(--pink-dark);
+}
+
+
+/* =========================================
+   YAKINDA
+========================================= */
+
+.coming-card {
+    padding: 70px 30px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+.coming-card span {
+    font-size: 55px;
+}
+
+.coming-card h2 {
+    margin: 15px 0;
+
+    color: var(--pink-dark);
+}
+
+.coming-card p {
+    color: var(--text-light);
+}
+
+
+/* =========================================
+   KALP
+========================================= */
+
+.heart {
+    position: fixed;
+
+    z-index: 500;
+
+    pointer-events: none;
+
+    animation:
+        floatHeart 5s linear forwards;
+}
+
+@keyframes floatHeart {
+
+    0% {
+        transform:
+            translateY(100vh)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-10vh)
+            rotate(20deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   ANİMASYONLAR
+========================================= */
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes pageIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   MOBİL
+========================================= */
+
+@media (max-width: 700px) {
+
+    .content {
+        padding:
+            90px 15px
+            40px;
+    }
+
+    .menu-button {
+        top: 15px;
+        left: 15px;
+
+        width: 48px;
+        height: 48px;
+    }
+
+    .side-menu {
+        width: min(320px, 88vw);
+    }
+
+    .hero-card {
+        padding: 30px 20px;
+    }
+
+    .hero-card h1 {
+        font-size: 28px;
+    }
+
+    .photo-grid {
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 10px;
+    }
+
+    .question-card {
+        padding: 28px 18px;
+    }
+
+    .question-card h2 {
+        font-size: 21px;
+    }
+
+    .big-counter-card {
+        grid-template-columns:
+            1fr 1fr;
+
+        padding: 15px;
+    }
+
+    .big-counter-card div {
+        padding: 20px 8px;
+    }
+
+    .big-counter-card strong {
+        font-size: 28px;
+    }
+
+    .birthday-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================
+   ÇOK KÜÇÜK TELEFONLAR
+========================================= */
+
+@media (max-width: 400px) {
+
+    .content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .photo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-card h1 {
+        font-size: 25px;
+    }
+}

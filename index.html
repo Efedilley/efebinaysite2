@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ay Gözlümmmm 💗</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         GİRİŞ EKRANI
+    ========================== -->
+
+    <div id="loginScreen" class="login-screen">
+
+        <div class="login-card">
+
+            <div class="login-heart">💗</div>
+
+            <h1>Ay Gözlümmmm</h1>
+
+            <p>
+                Şifreyi gir balımmmmm<br>
+                <span>(senin doğum gün, ay)</span> 💌
+            </p>
+
+            <input
+                type="password"
+                id="passwordInput"
+                placeholder="Şifre"
+                autocomplete="off"
+            >
+
+            <button id="loginButton">
+                Giriş Yap 💗
+            </button>
+
+            <p id="loginError"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ANA SİTE
+    ========================== -->
+
+    <div id="mainSite" class="main-site">
+
+        <!-- MENÜYÜ AÇMA BUTONU -->
+        <button id="menuButton" class="menu-button">
+            ☰
+        </button>
+
+
+        <!-- =========================
+             YAN MENÜ
+        ========================== -->
+
+        <aside id="sideMenu" class="side-menu">
+
+            <div class="menu-header">
+
+                <div>
+                    <span class="menu-small-title">
+                        Bizim Hikayemiz
+                    </span>
+
+                    <h2>💗 Anılarımız</h2>
+                </div>
+
+                <button id="closeMenu" class="close-menu">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="menu-content">
+
+                <!-- AYLAR -->
+
+                <div class="menu-category">
+
+                    <button class="category-button">
+                        <span>💞 Aylar</span>
+                        <span class="arrow">›</span>
+                    </button>
+
+                    <div class="submenu">
+
+                        <button
+                            class="submenu-button active"
+                            data-page="month1"
+                        >
+                            💗 1. Ay
+                        </button>
+
+                        <button
+                            class="submenu-button"
+                            data-page="month2"
+                        >
+                            💕 2. Ay
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SAYAÇLAR -->
+
+                <div class="menu-category">
+
+                    <button class="category-button">
+                        <span>⏱️ Sayaçlar</span>
+                        <span class="arrow">›</span>
+                    </button>
+
+                    <div class="submenu">
+
+                        <button
+                            class="submenu-button"
+                            data-page="relationshipCounter"
+                        >
+                            💗 Birlikte Geçen Zaman
+                        </button>
+
+                        <button
+                            class="submenu-button"
+                            data-page="birthdayCounter"
+                        >
+                            🎂 Doğum Günü Sayaçları
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OYUNLAR -->
+
+                <div class="menu-category">
+
+                    <button class="category-button">
+                        <span>🎮 Oyunlar</span>
+                        <span class="arrow">›</span>
+                    </button>
+
+                    <div class="submenu">
+
+                        <button
+                            class="submenu-button"
+                            data-page="games"
+                        >
+                            🎮 Oyunlar
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GELECEKTE EKLENEBİLECEK ALAN -->
+
+                <div class="menu-category">
+
+                    <button class="category-button">
+                        <span>📸 Anılar</span>
+                        <span class="arrow">›</span>
+                    </button>
+
+                    <div class="submenu">
+
+                        <button
+                            class="submenu-button"
+                            data-page="memories"
+                        >
+                            📷 Fotoğraflar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MENÜ ARKA PLANI -->
+
+        <div id="menuOverlay" class="menu-overlay"></div>
+
+
+        <!-- =========================
+             İÇERİK
+        ========================== -->
+
+        <main class="content">
+
+
+            <!-- =====================
+                 1. AY
+            ====================== -->
+
+            <section
+                id="month1"
+                class="page active-page"
+            >
+
+                <div class="hero-card">
+
+                    <span class="small-label">
+                        23 Haziran 2026
+                    </span>
+
+                    <h1>
+                        💗 1. Ayımız Kutlu Olsunn 💗
+                    </h1>
+
+                    <p id="typingText" class="typing-text"></p>
+
+                </div>
+
+
+                <div class="counter-card">
+
+                    <span>Birlikte geçen zamanımız</span>
+
+                    <strong id="mainCounter">
+                        Hesaplanıyor...
+                    </strong>
+
+                </div>
+
+
+                <div class="photo-grid">
+
+                    <div class="photo-card">
+                        <img src="1.jpeg" alt="Bizim fotoğrafımız">
+                    </div>
+
+                    <div class="photo-card">
+                        <img src="2.jpeg" alt="Bizim fotoğrafımız">
+                    </div>
+
+                    <div class="photo-card">
+                        <img src="4.jpeg" alt="Bizim fotoğrafımız">
+                    </div>
+
+                </div>
+
+
+                <div class="question-card">
+
+                    <h2>
+                        Benimle nice seneler görmeye ne dersinn? 💍
+                    </h2>
+
+                    <div class="question-buttons">
+
+                        <button id="yesButton" class="yes-button">
+                            Evet 💗
+                        </button>
+
+                        <button id="noButton" class="no-button">
+                            Hayır 😢
+                        </button>
+
+                    </div>
+
+                    <p id="resultText"></p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 2. AY
+            ====================== -->
+
+            <section
+                id="month2"
+                class="page"
+            >
+
+                <div class="hero-card">
+
+                    <span class="small-label">
+                        23 Temmuz 2026
+                    </span>
+
+                    <h1>
+                        💕 2. Ayımız 💕
+                    </h1>
+
+                    <p>
+                        Buraya 2. ayımızın özel yazısını,
+                        fotoğraflarını ve içeriklerini ekleyeceğiz.
+                    </p>
+
+                </div>
+
+                <div class="coming-card">
+
+                    <span>💗</span>
+
+                    <h2>
+                        Yeni anılarımız burada olacak.
+                    </h2>
+
+                    <p>
+                        Bu bölümü birazdan beraber dolduracağız.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 BİRLİKTE GEÇEN ZAMAN
+            ====================== -->
+
+            <section
+                id="relationshipCounter"
+                class="page"
+            >
+
+                <div class="hero-card">
+
+                    <span class="small-label">
+                        ⏱️ Biz
+                    </span>
+
+                    <h1>
+                        Birlikte Geçen Zamanımız
+                    </h1>
+
+                    <p>
+                        Birlikte geçirdiğimiz her saniye ayrı bir anı. 💗
+                    </p>
+
+                </div>
+
+                <div class="big-counter-card">
+
+                    <div>
+                        <strong id="counterDays">0</strong>
+                        <span>Gün</span>
+                    </div>
+
+                    <div>
+                        <strong id="counterHours">0</strong>
+                        <span>Saat</span>
+                    </div>
+
+                    <div>
+                        <strong id="counterMinutes">0</strong>
+                        <span>Dakika</span>
+                    </div>
+
+                    <div>
+                        <strong id="counterSeconds">0</strong>
+                        <span>Saniye</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 DOĞUM GÜNÜ SAYAÇLARI
+            ====================== -->
+
+            <section
+                id="birthdayCounter"
+                class="page"
+            >
+
+                <div class="hero-card">
+
+                    <span class="small-label">
+                        🎂 Özel Günler
+                    </span>
+
+                    <h1>
+                        Doğum Günü Sayaçları
+                    </h1>
+
+                    <p>
+                        İleride doğum günlerini buradan takip edeceğiz. 💕
+                    </p>
+
+                </div>
+
+                <div class="birthday-grid">
+
+                    <div class="birthday-card">
+
+                        <span>🎂</span>
+
+                        <h2>
+                            Benim Doğum Günüm
+                        </h2>
+
+                        <strong id="myBirthday">
+                            Yakında
+                        </strong>
+
+                    </div>
+
+
+                    <div class="birthday-card">
+
+                        <span>🎂</span>
+
+                        <h2>
+                            Senin Doğum Günün
+                        </h2>
+
+                        <strong id="partnerBirthday">
+                            Yakında
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 OYUNLAR
+            ====================== -->
+
+            <section
+                id="games"
+                class="page"
+            >
+
+                <div class="hero-card">
+
+                    <span class="small-label">
+                        🎮 Birlikte
+                    </span>
+
+                    <h1>
+                        Oyunlarımız
+                    </h1>
+
+                    <p>
+                        Buraya ileride beraber oynayabileceğimiz
+                        küçük oyunlar ekleyeceğiz. 💗
+                    </p>
+
+                </div>
+
+                <div class="coming-card">
+
+                    <span>🎮</span>
+
+                    <h2>
+                        Yakında...
+                    </h2>
+
+                    <p>
+                        Buraya güzel bir şeyler yapacağız. 😏
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 FOTOĞRAFLAR
+            ====================== -->
+
+            <section
+                id="memories"
+                class="page"
+            >
+
+                <div class="hero-card">
+
+                    <span class="small-label">
+                        📸 Anılarımız
+                    </span>
+
+                    <h1>
+                        Fotoğraflarımız
+                    </h1>
+
+                    <p>
+                        Birlikte biriktirdiğimiz güzel anılar. 💗
+                    </p>
+
+                </div>
+
+                <div class="photo-grid">
+
+                    <div class="photo-card">
+                        <img src="1.jpeg" alt="">
+                    </div>
+
+                    <div class="photo-card">
+                        <img src="2.jpeg" alt="">
+                    </div>
+
+                    <div class="photo-card">
+                        <img src="4.jpeg" alt="">
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
