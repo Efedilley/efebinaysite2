@@ -5,7 +5,7 @@
 const settings = {
 
     relationshipStart:
-        "2026-06-23T00:00:00",
+        "2026-06-23T17:55:00",
 
     password:
         "0311"
@@ -332,10 +332,7 @@ function updateCounters() {
         totalSeconds % 60;
 
 
-    document.getElementById(
-        "mainCounter"
-    ).textContent =
-        `${days} gündür birlikteyiz 💗`;
+    
 
 
     document.getElementById(
