@@ -991,3 +991,79 @@ body {
         font-size: 25px;
     }
 }
+.birthday-countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.time-box {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 15px 8px;
+    text-align: center;
+}
+
+.time-box strong {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.time-box span {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+}
+.birthday-countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #ffd6e5,
+        #ffeaf2
+    );
+
+    padding: 20px;
+    border-radius: 25px;
+
+    margin-top: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(255, 105, 150, 0.15);
+}
+
+.time-box {
+    background: rgba(255, 255, 255, 0.85);
+
+    border-radius: 18px;
+
+    padding: 15px 8px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 15px rgba(255, 105, 150, 0.10);
+}
+
+.time-box strong {
+    display: block;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    color: #d94f83;
+}
+
+.time-box span {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 13px;
+
+    color: #8f5269;
+}

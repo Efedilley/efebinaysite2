@@ -367,6 +367,155 @@ setInterval(
     1000
 );
 
+// ==============================
+// DOĞUM GÜNÜ SAYAÇLARI
+// ==============================
+
+function getNextBirthday(month, day, hour = 0, minute = 0) {
+
+    const now = new Date();
+
+    let year = now.getFullYear();
+
+    let birthday = new Date(
+        year,
+        month - 1,
+        day,
+        hour,
+        minute,
+        0
+    );
+
+    if (birthday <= now) {
+        birthday = new Date(
+            year + 1,
+            month - 1,
+            day,
+            hour,
+            minute,
+            0
+        );
+    }
+
+    return birthday;
+}
+
+
+function updateBirthdayCounters() {
+
+    const now = new Date();
+
+
+    // 🎂 Bebek Dilli → 29 Ocak
+
+    const myBirthday =
+        getNextBirthday(1 , 29 , 0 , 0 );
+
+    const myDiff =
+        myBirthday - now;
+
+
+    const myDays =
+        Math.floor(
+            myDiff /
+            (1000 * 60 * 60 * 24)
+        );
+
+    const myHours =
+        Math.floor(
+            (myDiff /
+            (1000 * 60 * 60)) % 24
+        );
+
+    const myMinutes =
+        Math.floor(
+            (myDiff /
+            (1000 * 60)) % 60
+        );
+
+    const mySeconds =
+        Math.floor(
+            (myDiff / 1000) % 60
+        );
+
+
+    document.getElementById(
+        "myBirthdayDays"
+    ).textContent = myDays;
+
+    document.getElementById(
+        "myBirthdayHours"
+    ).textContent = myHours;
+
+    document.getElementById(
+        "myBirthdayMinutes"
+    ).textContent = myMinutes;
+
+    document.getElementById(
+        "myBirthdaySeconds"
+    ).textContent = mySeconds;
+
+
+
+    // 🎂 Binay Vapur → 3 Kasım
+
+    const partnerBirthday =
+        getNextBirthday(11, 3 , 9 ,15 );
+
+    const partnerDiff =
+        partnerBirthday - now;
+
+
+    const partnerDays =
+        Math.floor(
+            partnerDiff /
+            (1000 * 60 * 60 * 24)
+        );
+
+    const partnerHours =
+        Math.floor(
+            (partnerDiff /
+            (1000 * 60 * 60)) % 24
+        );
+
+    const partnerMinutes =
+        Math.floor(
+            (partnerDiff /
+            (1000 * 60)) % 60
+        );
+
+    const partnerSeconds =
+        Math.floor(
+            (partnerDiff / 1000) % 60
+        );
+
+
+    document.getElementById(
+        "partnerBirthdayDays"
+    ).textContent = partnerDays;
+
+    document.getElementById(
+        "partnerBirthdayHours"
+    ).textContent = partnerHours;
+
+    document.getElementById(
+        "partnerBirthdayMinutes"
+    ).textContent = partnerMinutes;
+
+    document.getElementById(
+        "partnerBirthdaySeconds"
+    ).textContent = partnerSeconds;
+
+}
+
+
+updateBirthdayCounters();
+
+
+setInterval(
+    updateBirthdayCounters,
+    1000
+);
 
 /* =========================================
    EVET
