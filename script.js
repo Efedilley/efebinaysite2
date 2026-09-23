@@ -518,25 +518,25 @@ setInterval(
 );
 
 /* =========================================
-   EVET
+   3. AY - EVET
 ========================================= */
 
-const yesButton =
+const month3YesButton =
     document.getElementById(
-        "yesButton"
+        "month3YesButton"
     );
 
-const resultText =
+const month3ResultText =
     document.getElementById(
-        "resultText"
+        "month3ResultText"
     );
 
-yesButton.addEventListener(
+month3YesButton.addEventListener(
     "click",
     function() {
 
-        resultText.textContent =
-            "Biliyordummmmmm 😍 Seni çooooooooook seviyorum ❤️";
+        month3ResultText.textContent =
+            "Ben de her zaman her koşulda senin yanında olacağım balımmmmm💕seni çok seviyorum hayatımın anlamı biricik güzel sevgilimmmm 💗";
 
         for (
             let i = 0;
@@ -553,15 +553,15 @@ yesButton.addEventListener(
 
 
 /* =========================================
-   HAYIR
+   3. AY - HAYIR
 ========================================= */
 
-const noButton =
+const month3NoButton =
     document.getElementById(
-        "noButton"
+        "month3NoButton"
     );
 
-noButton.addEventListener(
+month3NoButton.addEventListener(
     "mouseenter",
     moveNo
 );
@@ -570,25 +570,25 @@ function moveNo() {
 
     const maxX =
         window.innerWidth -
-        noButton.offsetWidth -
+        month3NoButton.offsetWidth -
         20;
 
     const maxY =
         window.innerHeight -
-        noButton.offsetHeight -
+        month3NoButton.offsetHeight -
         20;
 
 
-    noButton.style.position =
+    month3NoButton.style.position =
         "fixed";
 
-    noButton.style.left =
+    month3NoButton.style.left =
         Math.max(
             10,
             Math.random() * maxX
         ) + "px";
 
-    noButton.style.top =
+    month3NoButton.style.top =
         Math.max(
             10,
             Math.random() * maxY
@@ -652,4 +652,92 @@ function createHeart() {
 setInterval(
     createHeart,
     1500
+);
+/* =========================================
+   GERİ BİLDİRİM - GOOGLE SHEETS
+========================================= */
+
+const feedbackButton =
+    document.getElementById(
+        "feedbackButton"
+    );
+
+const feedbackName =
+    document.getElementById(
+        "feedbackName"
+    );
+
+const feedbackMessage =
+    document.getElementById(
+        "feedbackMessage"
+    );
+
+const feedbackResult =
+    document.getElementById(
+        "feedbackResult"
+    );
+
+
+const feedbackURL =
+    "https://script.google.com/macros/s/AKfycbywHH3jgZNSRdCZOG7vhyOJsbKNg7zg7Xqx8KZXUd_P8yhtD4CimpzfBJEMrTPq6h0odA/exec";
+
+
+feedbackButton.addEventListener(
+    "click",
+    function() {
+
+        const name =
+            feedbackName.value.trim();
+
+        const message =
+            feedbackMessage.value.trim();
+
+
+        if (!message) {
+
+            feedbackResult.textContent =
+                "Mesajını yaz balımmm 🥹💗";
+
+            return;
+        }
+
+
+        feedbackResult.textContent =
+            "Gönderiliyor... 💌";
+
+
+        fetch(
+            feedbackURL,
+            {
+                method: "POST",
+
+                body: JSON.stringify({
+                    name: name || "İsimsiz",
+                    message: message,
+                    page: "3. Ay"
+                })
+            }
+        )
+        .then(
+            function() {
+
+                feedbackResult.textContent =
+                    "Mesajın bana ulaştıııı 💗🥹";
+
+                feedbackName.value = "";
+
+                feedbackMessage.value = "";
+
+            }
+        )
+        .catch(
+            function() {
+
+                feedbackResult.textContent =
+                    "Bir şeyler ters gitti 😢";
+
+            }
+        );
+
+    }
 );

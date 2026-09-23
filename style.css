@@ -1067,3 +1067,62 @@ body {
 
     color: #8f5269;
 }
+.feedback-card {
+    margin-top: 30px;
+    padding: 40px;
+    text-align: center;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.feedback-card h2 {
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.feedback-card p {
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+#feedbackName,
+#feedbackMessage {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #f0dce3;
+    border-radius: 13px;
+    padding: 13px 15px;
+    font-size: 15px;
+    font-family: inherit;
+    margin-bottom: 12px;
+    outline: none;
+}
+
+#feedbackMessage {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#feedbackName:focus,
+#feedbackMessage:focus {
+    border-color: #ff82a5;
+}
+
+#feedbackButton {
+    border: none;
+    padding: 13px 25px;
+    border-radius: 13px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #ff82a5;
+    color: white;
+}
+
+#feedbackResult {
+    margin-top: 15px;
+    margin-bottom: 0;
+    color: var(--pink-dark);
+    font-weight: bold;
+}
