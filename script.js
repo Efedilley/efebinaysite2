@@ -531,25 +531,21 @@ const month3ResultText =
         "month3ResultText"
     );
 
-month3YesButton.addEventListener(
-    "click",
-    function() {
+if (month3YesButton && month3ResultText) {
+    month3YesButton.addEventListener(
+        "click",
+        function() {
 
-        month3ResultText.textContent =
-            "Ben de her zaman her koşulda senin yanında olacağım balımmmmm💕seni çok seviyorum hayatımın anlamı biricik güzel sevgilimmmm 💗";
+            month3ResultText.textContent =
+                "Ben de her zaman her koşulda senin yanında olacağım balımmmmm💕seni çok seviyorum hayatımın anlamı biricik güzel sevgilimmmm 💗";
 
-        for (
-            let i = 0;
-            i < 50;
-            i++
-        ) {
-
-            createHeart();
+            for (let i = 0; i < 50; i++) {
+                createHeart();
+            }
 
         }
-
-    }
-);
+    );
+}
 
 
 /* =========================================
@@ -561,10 +557,12 @@ const month3NoButton =
         "month3NoButton"
     );
 
-month3NoButton.addEventListener(
-    "mouseenter",
-    moveNo
-);
+if (month3NoButton) {
+    month3NoButton.addEventListener(
+        "mouseenter",
+        moveNo
+    );
+}
 
 function moveNo() {
 
@@ -593,6 +591,42 @@ function moveNo() {
             10,
             Math.random() * maxY
         ) + "px";
+}
+
+
+/* =========================================
+   4. AY - EVET / HAYIR
+========================================= */
+
+const month4YesButton =
+    document.getElementById("month4YesButton");
+
+const month4NoButton =
+    document.getElementById("month4NoButton");
+
+const month4ResultText =
+    document.getElementById("month4ResultText");
+
+if (month4YesButton && month4ResultText) {
+    month4YesButton.addEventListener("click", function() {
+        month4ResultText.textContent =
+            "Daha nice aylara, yıllara beraber balımmm 💗 Seni çooooooooook seviyorum! 💞";
+
+        for (let i = 0; i < 50; i++) {
+            createHeart();
+        }
+    });
+}
+
+if (month4NoButton) {
+    month4NoButton.addEventListener("mouseenter", function() {
+        const maxX = Math.max(10, window.innerWidth - month4NoButton.offsetWidth - 20);
+        const maxY = Math.max(10, window.innerHeight - month4NoButton.offsetHeight - 20);
+
+        month4NoButton.style.position = "fixed";
+        month4NoButton.style.left = Math.max(10, Math.random() * maxX) + "px";
+        month4NoButton.style.top = Math.max(10, Math.random() * maxY) + "px";
+    });
 }
 
 
