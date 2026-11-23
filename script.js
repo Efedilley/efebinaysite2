@@ -595,21 +595,21 @@ function moveNo() {
 
 
 /* =========================================
-   4. AY - EVET / HAYIR
+   5. AY - EVET / HAYIR
 ========================================= */
 
-const month4YesButton =
-    document.getElementById("month4YesButton");
+const month5YesButton =
+    document.getElementById("month5YesButton");
 
-const month4NoButton =
-    document.getElementById("month4NoButton");
+const month5NoButton =
+    document.getElementById("month5NoButton");
 
-const month4ResultText =
-    document.getElementById("month4ResultText");
+const month5ResultText =
+    document.getElementById("month5ResultText");
 
-if (month4YesButton && month4ResultText) {
-    month4YesButton.addEventListener("click", function() {
-        month4ResultText.textContent =
+if (month5YesButton && month5ResultText) {
+    month5YesButton.addEventListener("click", function() {
+        month5ResultText.textContent =
             "Daha nice aylara, yıllara beraber balımmm 💗 Seni çooooooooook seviyorum! 💞";
 
         for (let i = 0; i < 50; i++) {
@@ -618,14 +618,14 @@ if (month4YesButton && month4ResultText) {
     });
 }
 
-if (month4NoButton) {
-    month4NoButton.addEventListener("mouseenter", function() {
-        const maxX = Math.max(10, window.innerWidth - month4NoButton.offsetWidth - 20);
-        const maxY = Math.max(10, window.innerHeight - month4NoButton.offsetHeight - 20);
+if (month5NoButton) {
+    month5NoButton.addEventListener("mouseenter", function() {
+        const maxX = Math.max(10, window.innerWidth - month5NoButton.offsetWidth - 20);
+        const maxY = Math.max(10, window.innerHeight - month5NoButton.offsetHeight - 20);
 
-        month4NoButton.style.position = "fixed";
-        month4NoButton.style.left = Math.max(10, Math.random() * maxX) + "px";
-        month4NoButton.style.top = Math.max(10, Math.random() * maxY) + "px";
+        month5NoButton.style.position = "fixed";
+        month5NoButton.style.left = Math.max(10, Math.random() * maxX) + "px";
+        month5NoButton.style.top = Math.max(10, Math.random() * maxY) + "px";
     });
 }
 
